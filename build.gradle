@@ -1,0 +1,12 @@
+plugins {
+}
+
+group 'com.kapok.erp'
+description = "Kapok ERP"
+
+if (hasProperty("buildScan")) {
+	buildScan {
+		termsOfServiceUrl = "https://gradle.com/terms-of-service"
+		termsOfServiceAgree = "yes"
+	}
+}

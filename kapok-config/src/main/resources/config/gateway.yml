@@ -1,0 +1,44 @@
+server:
+  port: 7300
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:7200/eureka
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: authorization
+          uri: lb://authorization
+          predicates:
+            - Path=/authorization/**
+          filters:
+            - RewritePath=/organization/?(?<remaining>.*), /${remaining}
+        - id: organization
+          uri: lb://organization
+          predicates:
+            - Path=/organization/**
+          filters:
+            - RewritePath=/organization/?(?<remaining>.*), /${remaining}
+#      discovery:
+#        locator:
+#          enabled: true
+#          lower-case-service-id: true
+
+
+management:
+  endpoint:
+    health:
+      show-details: always
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: gateway,health

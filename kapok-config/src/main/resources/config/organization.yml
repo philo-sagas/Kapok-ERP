@@ -1,0 +1,63 @@
+server:
+  port: 7400
+  servlet:
+    context-path: /
+
+#logging:
+#  level:
+#    com.kapok.erp: trace
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:7200/eureka
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://43.139.172.253:3306/KAPOK_ORG?allowMultiQueries=true&characterEncoding=UTF-8&useUnicode=true&serverTimezone=Asia/Shanghai
+    username: kapok_org
+    password: Ns8EhhvQYDEmuQAsqX4Z
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filters: stat
+      max-active: 20
+      initial-size: 3
+      max-wait: 6000
+      min-idle: 3
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      async-init: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:7000/oauth2/jwks
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,refresh

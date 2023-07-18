@@ -1,0 +1,76 @@
+server:
+  port: 7000
+  servlet:
+    context-path: /
+
+#logging:
+#  level:
+#    com.kapok.authorization: trace
+#    org.springframework.security: trace
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:7200/eureka
+
+spring:
+  security:
+    oauth2:
+      authorizationserver:
+        client:
+          public-client:
+            registration:
+              client-id: "public-client"
+              client-authentication-methods:
+                - "none"
+              authorization-grant-types:
+                - "authorization_code"
+              redirect-uris:
+                - "http://127.0.0.1:3000/"
+              scopes:
+                - "openid"
+                - "profile"
+            require-authorization-consent: false
+            require-proof-key: true
+          oidc-client:
+            registration:
+              client-id: "oidc-client"
+              client-secret: "{noop}secret"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "authorization_code"
+                - "refresh_token"
+              redirect-uris:
+                - "http://127.0.0.1:7300/login/oauth2/code/oidc-client"
+              post-logout-redirect-uris:
+                - "http://127.0.0.1:7300/"
+              scopes:
+                - "openid"
+                - "profile"
+            require-authorization-consent: true
+          messaging-client:
+            registration:
+              client-id: "messaging-client"
+              client-secret: "{noop}secret2"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "client_credentials"
+              scopes:
+                - "message:read"
+                - "message:write"
+
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,refresh
