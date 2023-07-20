@@ -8,16 +8,23 @@ const routes = [
     name: 'Home',
     beforeEnter: (to, from, next) => {
       if (to.query.code) {
-        obtainAccessToken(to.query.code).then(() => next({name: 'OrganizationHome'}))
+        obtainAccessToken(to.query.code, to.query.state)
+          .then(() => next(to.query.state))
+      } else if (to.query.error) {
+        next({name: 'Error', query: to.query})
       } else {
         next({name: 'OrganizationHome'})
       }
     }
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: () => import('@/views/Login.vue')
+    path: '/error',
+    component: () => import('@/layouts/Default.vue'),
+    children: [{
+      path: '',
+      name: 'Error',
+      component: () => import('@/views/Error.vue')
+    }]
   },
   {
     path: '/:pathMatch(.*)*',
@@ -43,10 +50,7 @@ const routes = [
             meta: {
               breadcrumbs: [
                 {
-                  title: '用户管理',
-                  to: {
-                    name: 'OrganizationUser'
-                  }
+                  title: '用户管理'
                 }
               ]
             }
@@ -65,10 +69,7 @@ const routes = [
                   }
                 },
                 {
-                  title: '编辑',
-                  to: {
-                    name: 'OrganizationUserEdit'
-                  }
+                  title: '编辑'
                 }
               ]
             }
@@ -85,10 +86,7 @@ const routes = [
             meta: {
               breadcrumbs: [
                 {
-                  title: '角色管理',
-                  to: {
-                    name: 'OrganizationRole'
-                  }
+                  title: '角色管理'
                 }
               ]
             }
@@ -107,10 +105,26 @@ const routes = [
                   }
                 },
                 {
-                  title: '编辑',
+                  title: '编辑'
+                }
+              ]
+            }
+          },
+          {
+            path: ':id/grant',
+            name: 'OrganizationRoleGrant',
+            component: () => import(/* webpackChunkName: "organization" */ '@/views/role/RoleGrant.vue'),
+            props: true,
+            meta: {
+              breadcrumbs: [
+                {
+                  title: '角色管理',
                   to: {
-                    name: 'OrganizationRoleEdit'
+                    name: 'OrganizationRole'
                   }
+                },
+                {
+                  title: '授权'
                 }
               ]
             }
@@ -127,10 +141,7 @@ const routes = [
             meta: {
               breadcrumbs: [
                 {
-                  title: '权限管理',
-                  to: {
-                    name: 'OrganizationPermission'
-                  }
+                  title: '权限管理'
                 }
               ]
             }
@@ -149,10 +160,7 @@ const routes = [
                   }
                 },
                 {
-                  title: '编辑',
-                  to: {
-                    name: 'OrganizationPermissionEdit'
-                  }
+                  title: '编辑'
                 }
               ]
             }
@@ -169,10 +177,7 @@ const routes = [
             meta: {
               breadcrumbs: [
                 {
-                  title: '组织架构管理',
-                  to: {
-                    name: 'OrganizationOrganization'
-                  }
+                  title: '组织架构管理'
                 }
               ]
             }
@@ -191,10 +196,7 @@ const routes = [
                   }
                 },
                 {
-                  title: '编辑',
-                  to: {
-                    name: 'OrganizationOrganizationEdit'
-                  }
+                  title: '编辑'
                 }
               ]
             }
@@ -211,10 +213,7 @@ const routes = [
             meta: {
               breadcrumbs: [
                 {
-                  title: '数据字典管理',
-                  to: {
-                    name: 'OrganizationDictionary'
-                  }
+                  title: '数据字典管理'
                 }
               ]
             }
@@ -233,10 +232,7 @@ const routes = [
                   }
                 },
                 {
-                  title: '编辑',
-                  to: {
-                    name: 'OrganizationDictionaryEdit'
-                  }
+                  title: '编辑'
                 }
               ]
             }

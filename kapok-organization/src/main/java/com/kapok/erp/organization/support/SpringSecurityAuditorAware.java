@@ -1,7 +1,9 @@
 package com.kapok.erp.organization.support;
 
-import com.kapok.erp.organization.entities.User;
 import org.springframework.data.domain.AuditorAware;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -10,9 +12,12 @@ import java.util.Optional;
 public class SpringSecurityAuditorAware implements AuditorAware<String> {
 	@Override
 	public Optional<String> getCurrentAuditor() {
-		User user = new User();
-		user.setId(1);
-		user.setUsername("admin");
-		return Optional.of(user.getUsername());
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Optional<String> subject = Optional.ofNullable(authentication)
+				.filter(Authentication::isAuthenticated)
+				.map(Authentication::getPrincipal)
+				.map(Jwt.class::cast)
+				.map(Jwt::getSubject);
+		return subject;
 	}
 }

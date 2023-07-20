@@ -11,8 +11,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "rolePermission")
 public class RolePermission {
-    @EmbeddedId
-    private RolePermissionId id;
+	@EmbeddedId
+	private RolePermissionId id;
 
-    //TODO [JPA Buddy] generate columns from DB
+	//TODO [JPA Buddy] generate columns from DB
 }

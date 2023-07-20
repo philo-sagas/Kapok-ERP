@@ -21,7 +21,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://43.139.172.253:3306/KAPOK_ORG?allowMultiQueries=true&characterEncoding=UTF-8&useUnicode=true&serverTimezone=Asia/Shanghai
     username: kapok_org
-    password: Ns8EhhvQYDEmuQAsqX4Z
+    password: "{cipher}f9fd7db66040dcec59e481c8dcb3dfc9eae8e2ee2be54efe7cd8b4ec0b81c3fd228478168d5d6559f736a77fc25578ac"
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       filters: stat
@@ -38,19 +38,26 @@ spring:
       pool-prepared-statements: true
       max-open-prepared-statements: 20
       async-init: true
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: Asia/Shanghai
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  jackson:
+    locale: zh_CN
+    time-zone: Asia/Shanghai
+    date-format: "yyyy-MM-dd HH:mm:ss"
+    serialization:
+      fail-on-empty-beans: false
   security:
     oauth2:
       resourceserver:
         jwt:
           jwk-set-uri: http://localhost:7000/oauth2/jwks
-  jpa:
-    show-sql: true
-    hibernate:
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-  jackson:
-    serialization:
-      fail-on-empty-beans: false
 
 
 management:

@@ -1,5 +1,6 @@
 package com.kapok.erp.organization.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -7,6 +8,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
@@ -17,67 +20,89 @@ import java.time.Instant;
 @Table(name = "organization")
 @EntityListeners(AuditingEntityListener.class)
 public class Organization {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
+	private Integer id;
 
-    @NotNull
-    @Column(name = "pid", nullable = false)
-    private Integer pid;
+	@NotNull
+	@Column(name = "pid", nullable = false)
+	private Integer pid;
 
-    @Size(max = 50)
-    @NotNull
-    @Column(name = "code", nullable = false, length = 50)
-    private String code;
+	@Size(max = 50)
+	@NotNull
+	@Column(name = "code", nullable = false, length = 50)
+	private String code;
 
-    @Size(max = 250)
-    @NotNull
-    @Column(name = "pCode", nullable = false, length = 250)
-    private String pCode;
+	@Size(max = 254)
+	@NotNull
+	@Column(name = "pCode", nullable = false, length = 254)
+	private String pCode;
 
-    @Size(max = 50)
-    @NotNull
-    @Column(name = "name", nullable = false, length = 50)
-    private String name;
+	@Size(max = 50)
+	@NotNull
+	@Column(name = "name", nullable = false, length = 50)
+	private String name;
 
-    @NotNull
-    @Column(name = "type", nullable = false)
-    private Byte type;
+	@NotNull
+	@Column(name = "type", nullable = false)
+	private Byte type;
 
-    @NotNull
-    @Column(name = "status", nullable = false)
-    private Byte status;
+	@NotNull
+	@Column(name = "sort", nullable = false)
+	private Integer sort;
 
-    @CreatedDate
-    @NotNull
-    @Column(name = "createdDate", nullable = false)
-    private Instant createdDate;
+	@NotNull
+	@Column(name = "leaf", nullable = false)
+	private Boolean leaf;
 
-    @CreatedBy
-    @NotNull
-	@Column(name = "createdBy", nullable = false, length = 50)
+	@NotNull
+	@Column(name = "enabled", nullable = false)
+	private Boolean enabled;
+
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
+	@CreatedDate
+	@NotNull
+	@Column(name = "createdDate", nullable = false)
+	private Instant createdDate;
+
+	@CreatedBy
+	@Size(max = 20)
+	@NotNull
+	@Column(name = "createdBy", nullable = false, length = 20)
 	private String createdBy;
 
-    @Version
-    @NotNull
-    @Column(name = "version", nullable = false)
-    private Integer version;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
+	@LastModifiedDate
+	@NotNull
+	@Column(name = "lastModifiedDate", nullable = false)
+	private Instant lastModifiedDate;
 
-    @Size(max = 1000)
-    @Column(name = "functionalAuthority", length = 1000)
-    private String functionalAuthority;
+	@LastModifiedBy
+	@Size(max = 20)
+	@NotNull
+	@Column(name = "lastModifiedBy", nullable = false, length = 20)
+	private String lastModifiedBy;
 
-    @Size(max = 1000)
-    @Column(name = "workingProcedure", length = 1000)
-    private String workingProcedure;
+	@Version
+	@NotNull
+	@Column(name = "version", nullable = false)
+	private Integer version;
 
-    @Size(max = 1000)
-    @Column(name = "relatedRequirement", length = 1000)
-    private String relatedRequirement;
+	@Size(max = 500)
+	@Column(name = "description", length = 500)
+	private String description;
 
-    @Size(max = 500)
-    @Column(name = "description", length = 500)
-    private String description;
+	@Size(max = 1000)
+	@Column(name = "functionalAuthority", length = 1000)
+	private String functionalAuthority;
+
+	@Size(max = 1000)
+	@Column(name = "workingProcedure", length = 1000)
+	private String workingProcedure;
+
+	@Size(max = 1000)
+	@Column(name = "relatedRequirement", length = 1000)
+	private String relatedRequirement;
 
 }

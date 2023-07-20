@@ -3,10 +3,10 @@ server:
   servlet:
     context-path: /
 
-#logging:
-#  level:
-#    com.kapok.authorization: trace
-#    org.springframework.security: trace
+logging:
+  level:
+    com.kapok.authorization: trace
+    org.springframework.security: trace
 
 eureka:
   instance:
@@ -18,6 +18,36 @@ eureka:
       defaultZone: http://127.0.0.1:7200/eureka
 
 spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://43.139.172.253:3306/KAPOK_ORG?allowMultiQueries=true&characterEncoding=UTF-8&useUnicode=true&serverTimezone=Asia/Shanghai
+    username: kapok_org
+    password: "{cipher}f9fd7db66040dcec59e481c8dcb3dfc9eae8e2ee2be54efe7cd8b4ec0b81c3fd228478168d5d6559f736a77fc25578ac"
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filters: stat
+      max-active: 20
+      initial-size: 3
+      max-wait: 6000
+      min-idle: 3
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      async-init: true
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: Asia/Shanghai
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
   security:
     oauth2:
       authorizationserver:
@@ -25,30 +55,38 @@ spring:
           public-client:
             registration:
               client-id: "public-client"
+              client-secret: "{cipher}ecb66af8ca55530724279912fc37a5c1b6e680015d123527d6bbbc9913212e2bbe0e50a8e395f23df5144c3a5bf62d32339c6f21f4a882dae9434597c1308acf75ae4bdbb606a5bdf62fe22c512bf9ba"
               client-authentication-methods:
-                - "none"
+                - "client_secret_basic"
               authorization-grant-types:
                 - "authorization_code"
               redirect-uris:
-                - "http://127.0.0.1:3000/"
+                - "http://127.0.0.1:3000"
+              post-logout-redirect-uris:
+                - "http://127.0.0.1:3000"
               scopes:
                 - "openid"
                 - "profile"
+            token:
+              access-token-time-to-live: 8h
             require-authorization-consent: false
             require-proof-key: true
           oidc-client:
             registration:
               client-id: "oidc-client"
-              client-secret: "{noop}secret"
+              client-secret: "{cipher}e7061b67aeadf66b426005525ad9180c7599f889ac14723a599f292214804bf3feb557c7a778e3cd7cabea7bd9b2d2a007634be194fae77f2f6e8406c79ece8e565e6f0acf446d542e7abf4c5c01c7f6"
               client-authentication-methods:
                 - "client_secret_basic"
               authorization-grant-types:
                 - "authorization_code"
                 - "refresh_token"
               redirect-uris:
-                - "http://127.0.0.1:7300/login/oauth2/code/oidc-client"
+                - "http://127.0.0.1:3000"
+                - "http://127.0.0.1:7700/login/oauth2/code/oidc-client"
+                - "http://127.0.0.1:7700/authorized"
               post-logout-redirect-uris:
-                - "http://127.0.0.1:7300/"
+                - "http://127.0.0.1:3000"
+                - "http://127.0.0.1:7700"
               scopes:
                 - "openid"
                 - "profile"
@@ -56,7 +94,7 @@ spring:
           messaging-client:
             registration:
               client-id: "messaging-client"
-              client-secret: "{noop}secret2"
+              client-secret: "{cipher}d7b8309f2ae068a88289331d3992fb7e3c4c093e0a67b33bb2c77da8c76eadd06012af4c48c4d5b685964d5cd5c17d25869993f457beabe5a81d1b94f16672ae03c6069136262e74d8e62c54a70a0c1f"
               client-authentication-methods:
                 - "client_secret_basic"
               authorization-grant-types:

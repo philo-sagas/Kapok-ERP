@@ -14,27 +14,27 @@ import java.util.Objects;
 @Setter
 @Embeddable
 public class RolePermissionId implements Serializable {
-    private static final long serialVersionUID = 275670841463271058L;
-    @NotNull
-    @Column(name = "roleId", nullable = false)
-    private Integer roleId;
+	private static final long serialVersionUID = 275670841463271058L;
+	@NotNull
+	@Column(name = "roleId", nullable = false)
+	private Integer roleId;
 
-    @NotNull
-    @Column(name = "permId", nullable = false)
-    private Integer permId;
+	@NotNull
+	@Column(name = "permId", nullable = false)
+	private Integer permId;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        RolePermissionId entity = (RolePermissionId) o;
-        return Objects.equals(this.roleId, entity.roleId) &&
-                Objects.equals(this.permId, entity.permId);
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+		RolePermissionId entity = (RolePermissionId) o;
+		return Objects.equals(this.roleId, entity.roleId) &&
+				Objects.equals(this.permId, entity.permId);
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(roleId, permId);
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(roleId, permId);
+	}
 
 }

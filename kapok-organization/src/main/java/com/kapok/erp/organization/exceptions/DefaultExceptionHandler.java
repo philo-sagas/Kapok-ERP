@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Log4j2
 @RestControllerAdvice
 public class DefaultExceptionHandler {
-    @ExceptionHandler
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ResultModel<Void> handleGlobalException(Throwable ex) {
-        log.error(ex, ex);
-        return ResultModel.failure(ex.getMessage());
-    }
+	@ExceptionHandler
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	public ResultModel<Void> handleGlobalException(Throwable ex) {
+		log.error(ex, ex);
+		return ResultModel.failure(ex.getMessage());
+	}
 }

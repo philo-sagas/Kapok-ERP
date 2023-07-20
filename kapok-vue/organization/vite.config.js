@@ -22,9 +22,10 @@ export default defineConfig({
   ],
   define: {
     'process.env': {
-      redirect_uri: 'http://127.0.0.1:3000/',
-      authorize_uri: 'http://127.0.0.1:7000/oauth2/authorize',
-      token_uri: 'http://127.0.0.1:7000/oauth2/token',
+      client_id: 'public-client',
+      client_secret: 'secret',
+      scope: 'openid profile',
+      require_proof_key: true
     }
   },
   resolve: {

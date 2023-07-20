@@ -3,7 +3,13 @@
     v-model="showDatePicker"
     :close-on-content-click="false">
     <template #activator="{ props }">
-      <v-text-field v-model="dateFormatted" v-bind="$attrs">
+      <v-text-field
+        readonly
+        clearable
+        v-bind="$attrs"
+        :model-value="dateFormatted"
+        @click:clear="onUpdateModelValue([])"
+      >
         <template #append-inner>
           <v-icon v-bind="props">mdi-calendar</v-icon>
         </template>

@@ -9,6 +9,7 @@ export const useRuleStore = defineStore('rule', () => {
     counter30: value => !value ? true : value.length <= 30 || '最多输入30个字符！',
     counter40: value => !value ? true : value.length <= 40 || '最多输入40个字符！',
     counter50: value => !value ? true : value.length <= 50 || '最多输入50个字符！',
+    counter100: value => !value ? true : value.length <= 100 || '最多输入100个字符！',
     counter500: value => !value ? true : value.length <= 500 || '最多输入500个字符！',
     counter1000: value => !value ? true : value.length <= 1000 || '最多输入1000个字符！',
     mobile: value => {

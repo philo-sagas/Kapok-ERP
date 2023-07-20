@@ -11,23 +11,27 @@ import lombok.Setter;
 @Entity
 @Table(name = "dictionaryItem")
 public class DictionaryItem {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
+	private Integer id;
 
-    @NotNull
-    @Column(name = "dictId", nullable = false)
-    private Integer dictId;
+	@NotNull
+	@Column(name = "dictId", nullable = false)
+	private Integer dictId;
 
-    @Size(max = 50)
-    @NotNull
-    @Column(name = "code", nullable = false, length = 50)
-    private String code;
+	@Size(max = 50)
+	@NotNull
+	@Column(name = "code", nullable = false, length = 50)
+	private String code;
 
-    @Size(max = 50)
-    @NotNull
-    @Column(name = "value", nullable = false, length = 50)
-    private String value;
+	@Size(max = 50)
+	@NotNull
+	@Column(name = "value", nullable = false, length = 50)
+	private String value;
+
+	@NotNull
+	@Column(name = "sort", nullable = false)
+	private Integer sort;
 
 }

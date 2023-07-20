@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <default-bar/>
+    <default-bar :show-tools="false"/>
     <default-view/>
   </v-app>
 </template>

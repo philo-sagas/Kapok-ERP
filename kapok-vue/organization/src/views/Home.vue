@@ -28,58 +28,9 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import {useAppStore} from '@/store/app'
 
-const moduleMenus = ref([
-  {
-    title: '组织管理',
-    value: 'organization',
-    props: {
-      prependIcon: 'mdi-account-group',
-      to: {
-        name: 'OrganizationOrganization'
-      }
-    }
-  },
-  {
-    title: '用户管理',
-    value: 'user',
-    props: {
-      prependIcon: 'mdi-account',
-      to: {
-        name: 'OrganizationUser'
-      }
-    }
-  },
-  {
-    title: '角色管理',
-    value: 'role',
-    props: {
-      prependIcon: 'mdi-clipboard-account',
-      to: {
-        name: 'OrganizationRole'
-      }
-    }
-  },
-  {
-    title: '权限管理',
-    value: 'permission',
-    props: {
-      prependIcon: 'mdi-shield-account',
-      to: {
-        name: 'OrganizationPermission'
-      }
-    }
-  },
-  {
-    title: '数据字典',
-    value: 'dictionary',
-    props: {
-      prependIcon: 'mdi-book-alphabet',
-      to: {
-        name: 'OrganizationDictionary'
-      }
-    }
-  }
-])
+const appStore = useAppStore()
+const moduleMenus = appStore.getAuthModuleMenus('OrganizationService')
+
 </script>

@@ -8,5 +8,10 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "kapok.organization")
 public class ApplicationConstants {
+	public static final String PLACEHOLDER = "🌟"; // ✨
 
+	public interface Dictionary {
+		Byte typeSingle = 1;
+		Byte typeMulti = 2;
+	}
 }
