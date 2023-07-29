@@ -11,6 +11,7 @@ import 'vuetify/styles'
 
 // Composables
 import { createVuetify } from 'vuetify'
+import { en, zhHans } from 'vuetify/locale'
 import * as labsComponents from 'vuetify/labs/components'
 import CDatePickerField from '../components/CDatePickerField'
 import CCheckboxGroupHierarchy from '../components/CCheckboxGroupHierarchy'
@@ -21,6 +22,10 @@ export default createVuetify({
     ...labsComponents,
     CDatePickerField,
     CCheckboxGroupHierarchy
+  },
+  locale: {
+    locale: 'zhHans',
+    messages: { zhHans, en }
   },
   theme: {
     themes: {

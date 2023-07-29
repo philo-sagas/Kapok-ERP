@@ -270,7 +270,7 @@ const state = reactive({
   },
   headers: [
     {title: '权限代码', key: 'code', align: 'start', sortable: true},
-    {title: '权限名称', key: 'name', align: 'start', sortable: true},
+    {title: '权限名称', key: 'name', align: 'start', sortable: false},
     {title: '权限类型', key: 'type', align: 'center', sortable: true},
     {title: '权限状态', key: 'enabled', align: 'center', sortable: false},
     {title: '创建时间', key: 'createdDate', align: 'start', sortable: false},

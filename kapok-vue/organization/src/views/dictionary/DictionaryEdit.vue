@@ -168,7 +168,7 @@ const state = reactive({
   item: {
     code: null,
     value: null,
-    sort: 0
+    rank: 0
   }
 })
 const router = useRouter()
@@ -221,9 +221,9 @@ async function handleSubmit() {
 }
 
 function addItem() {
-  const {code, value, sort = 0} = state.item
+  const {code, value, rank = 0} = state.item
   if (code && value) {
-    model.value.items.push({code, value, sort})
+    model.value.items.push({code, value, rank})
     state.item = {}
   } else {
     state.item.codeErrorMessage = code ? undefined : '必填！'

@@ -1,0 +1,36 @@
+server:
+  port: 7400
+  servlet:
+    context-path: /
+
+logging:
+  level:
+    com.kapok.erp.organization: trace
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/KAPOK_ORG?allowMultiQueries=true&characterEncoding=UTF-8&useUnicode=true&serverTimezone=Asia/Shanghai
+    username: kapok_org
+    password: "{cipher}f9fd7db66040dcec59e481c8dcb3dfc9eae8e2ee2be54efe7cd8b4ec0b81c3fd228478168d5d6559f736a77fc25578ac"
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filters: stat
+      max-active: 20
+      initial-size: 3
+      max-wait: 6000
+      min-idle: 3
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      async-init: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:7000/oauth2/jwks

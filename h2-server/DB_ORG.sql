@@ -41,7 +41,7 @@ create table dictionaryItem
    dictId               int not null  comment '',
    code                 varchar(50) not null  comment '',
    `value`              varchar(50) not null  comment '',
-   sort                 int not null  comment '',
+   rank                 int not null  comment '',
    primary key (id)
 );
 
@@ -56,7 +56,7 @@ create table organization
    pCode                varchar(266) not null  comment '',
    name                 varchar(50) not null  comment '',
    type                 tinyint not null  comment '直线制；职能制；直线－职能制；事业部制；模拟分权制；矩阵制；扁平式',
-   sort                 int not null  comment '',
+   rank                 int not null  comment '',
    leaf                 bool not null  comment '',
    enabled              bool not null  comment '',
    createdDate          timestamp not null  comment '',
@@ -82,7 +82,7 @@ create table permission
    pCode                varchar(266) not null  comment '',
    name                 varchar(50) not null  comment '',
    type                 tinyint not null  comment '模块；菜单；功能',
-   sort                 int not null  comment '',
+   rank                 int not null  comment '',
    leaf                 bool not null  comment '',
    enabled              bool not null  comment '',
    createdDate          timestamp not null  comment '',

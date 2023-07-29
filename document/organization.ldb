@@ -1590,7 +1590,7 @@ DESTINATION 0 新宋体,8,N</a:FontList>
 <o:RelationshipSymbol Id="o16">
 <a:CreationDate>1688468855</a:CreationDate>
 <a:ModificationDate>1689941877</a:ModificationDate>
-<a:Rect>((-26868,-1227), (-8564,12041))</a:Rect>
+<a:Rect>((-26868,-1227), (-8564,12039))</a:Rect>
 <a:ListOfPoints>((-26468,-27),(-26468,11071),(-11564,11071),(-11564,-27),(-26468,-27))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>55</a:ArrowStyle>
@@ -2386,10 +2386,10 @@ LABL 0 Arial,8,N</a:FontList>
 <o:EntityAttribute Id="o78">
 <a:ObjectID>F222CCD7-F2B0-46DC-AEFD-CE47F7569E4D</a:ObjectID>
 <a:Name>排列顺序</a:Name>
-<a:Code>sort</a:Code>
+<a:Code>rank</a:Code>
 <a:CreationDate>1689936334</a:CreationDate>
 <a:Creator>philo</a:Creator>
-<a:ModificationDate>1689936963</a:ModificationDate>
+<a:ModificationDate>1691419480</a:ModificationDate>
 <a:Modifier>philo</a:Modifier>
 <a:DataType>I</a:DataType>
 <a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
@@ -2586,10 +2586,10 @@ LABL 0 Arial,8,N</a:FontList>
 <o:EntityAttribute Id="o94">
 <a:ObjectID>5777D9AB-833D-486C-9CDE-DF245D4013F1</a:ObjectID>
 <a:Name>排列顺序</a:Name>
-<a:Code>sort</a:Code>
+<a:Code>rank</a:Code>
 <a:CreationDate>1689937866</a:CreationDate>
 <a:Creator>philo</a:Creator>
-<a:ModificationDate>1689937887</a:ModificationDate>
+<a:ModificationDate>1691419467</a:ModificationDate>
 <a:Modifier>philo</a:Modifier>
 <a:DataType>I</a:DataType>
 <a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
@@ -3013,10 +3013,10 @@ LABL 0 Arial,8,N</a:FontList>
 <o:EntityAttribute Id="o127">
 <a:ObjectID>14BEB635-76CD-44E9-923A-82BA7E54AA5B</a:ObjectID>
 <a:Name>排列顺序</a:Name>
-<a:Code>sort</a:Code>
+<a:Code>rank</a:Code>
 <a:CreationDate>1690378072</a:CreationDate>
 <a:Creator>philo</a:Creator>
-<a:ModificationDate>1690378101</a:ModificationDate>
+<a:ModificationDate>1691419493</a:ModificationDate>
 <a:Modifier>philo</a:Modifier>
 <a:DataType>I</a:DataType>
 <a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
@@ -3295,12 +3295,12 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>organization</a:Code>
 <a:CreationDate>1689521299</a:CreationDate>
 <a:Creator>philo</a:Creator>
-<a:ModificationDate>1690303090</a:ModificationDate>
+<a:ModificationDate>1690378119</a:ModificationDate>
 <a:Modifier>philo</a:Modifier>
 <a:TargetModelURL>file:///D|/sagas/ERP/document/organization.pdm</a:TargetModelURL>
 <a:TargetModelID>2B5CCE76-EC61-44A5-94EC-A465EE23D075</a:TargetModelID>
 <a:TargetModelClassID>CDE44E21-9669-11D1-9914-006097355D9B</a:TargetModelClassID>
-<a:TargetModelLastModificationDate>1690303091</a:TargetModelLastModificationDate>
+<a:TargetModelLastModificationDate>1690378120</a:TargetModelLastModificationDate>
 <c:SessionShortcuts>
 <o:Shortcut Ref="o4"/>
 </c:SessionShortcuts>

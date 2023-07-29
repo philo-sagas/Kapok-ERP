@@ -31,7 +31,7 @@ public class DictionaryItem {
 	private String value;
 
 	@NotNull
-	@Column(name = "sort", nullable = false)
-	private Integer sort;
+	@Column(name = "rank", nullable = false)
+	private Integer rank;
 
 }

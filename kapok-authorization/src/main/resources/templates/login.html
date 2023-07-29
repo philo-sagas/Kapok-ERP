@@ -11,7 +11,9 @@
 </head>
 
 <body>
-<div id="app">
+<div id="app"></div>
+
+<script type="text/x-template" id="appTemplate">
     <v-container class="mt-6">
         <div class="d-flex justify-center">
             <v-icon
@@ -83,7 +85,7 @@
             </form>
         </v-card>
     </v-container>
-</div>
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.min.js" th:src="@{/webjars/vue/3.3.4/dist/vue.global.prod.js}"></script>
 <script src="https://cdn.jsdelivr.net/npm/vuetify@3.3.8/dist/vuetify.min.js" th:src="@{/webjars/vuetify/3.3.8/dist/vuetify.min.js}"></script>
@@ -111,7 +113,8 @@
             return {
                 visible
             }
-        }
+        },
+        template: '#appTemplate'
     })
     app.use(vuetify).mount('#app')
 </script>

@@ -14,5 +14,5 @@ public class DictionaryItemDto {
 
 	private String value;
 
-	private Integer sort;
+	private Integer rank;
 }

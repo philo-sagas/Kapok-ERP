@@ -153,7 +153,7 @@ const dictionaryStore = useDictionaryStore()
 const organizationTypeItems = dictionaryStore.getValue('OrganizationType')
 const model = ref({
   enabled: true,
-  sort: 0
+  rank: 0
 })
 const form = ref()
 

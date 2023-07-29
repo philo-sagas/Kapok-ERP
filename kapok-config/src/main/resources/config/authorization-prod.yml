@@ -12,22 +12,15 @@ kapok:
   authorization:
     cors-redirect-uris:
       - "http://127.0.0.1:3000"
-
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:7200/eureka
+      - "http://43.139.172.253:7700"
+      - "http://43.139.172.253:8800"
 
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql.sqlpub.com:3306/kapok_org?allowMultiQueries=true&characterEncoding=UTF-8&useUnicode=true&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/KAPOK_ORG?allowMultiQueries=true&characterEncoding=UTF-8&useUnicode=true&serverTimezone=Asia/Shanghai
     username: kapok_org
-    password: "{cipher}3a16193671a38d0e8f80e64d9e2da3d6d590d9f1c780ce43b192015e08353b08355c1e76229428c976d3c5cb3a43457f"
+    password: "{cipher}f9fd7db66040dcec59e481c8dcb3dfc9eae8e2ee2be54efe7cd8b4ec0b81c3fd228478168d5d6559f736a77fc25578ac"
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       filters: stat
@@ -44,15 +37,6 @@ spring:
       pool-prepared-statements: true
       max-open-prepared-statements: 20
       async-init: true
-  jpa:
-    show-sql: true
-    properties:
-      hibernate:
-        jdbc:
-          time_zone: Asia/Shanghai
-    hibernate:
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
   security:
     oauth2:
       authorizationserver:
@@ -67,9 +51,12 @@ spring:
                 - "authorization_code"
               redirect-uris:
                 - "http://127.0.0.1:3000"
-                - "http://127.0.0.1:3000/authorized"
+                - "http://43.139.172.253:7700"
+                - "http://43.139.172.253:8800"
               post-logout-redirect-uris:
                 - "http://127.0.0.1:3000"
+                - "http://43.139.172.253:7700"
+                - "http://43.139.172.253:8800"
               scopes:
                 - "openid"
                 - "profile"
@@ -88,16 +75,16 @@ spring:
                 - "refresh_token"
               redirect-uris:
                 - "http://127.0.0.1:3000"
-                - "http://127.0.0.1:3000/authorized"
-                - "http://127.0.0.1:7700/login/oauth2/code/oidc-client"
-                - "http://127.0.0.1:7700/authorized"
+                - "http://43.139.172.253:7700"
+                - "http://43.139.172.253:8800"
               post-logout-redirect-uris:
                 - "http://127.0.0.1:3000"
-                - "http://127.0.0.1:7700"
+                - "http://43.139.172.253:7700"
+                - "http://43.139.172.253:8800"
               scopes:
                 - "openid"
                 - "profile"
-            require-authorization-consent: true
+            require-authorization-consent: false
           messaging-client:
             registration:
               client-id: "messaging-client"
@@ -109,13 +96,3 @@ spring:
               scopes:
                 - "message:read"
                 - "message:write"
-
-
-management:
-  endpoint:
-    health:
-      show-details: always
-  endpoints:
-    web:
-      exposure:
-        include: health,refresh

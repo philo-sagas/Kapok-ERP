@@ -12,7 +12,7 @@ public interface DictionaryItemRepository extends JpaRepository<DictionaryItem, 
 
 	void deleteByDictId(Integer dictId);
 
-	@Query(value = "SELECT NEW com.kapok.erp.organization.outputs.DictionaryItemDto(di.code, di.value, di.sort)" +
+	@Query(value = "SELECT NEW com.kapok.erp.organization.outputs.DictionaryItemDto(di.code, di.value, di.rank)" +
 			" FROM DictionaryItem di WHERE di.dictId = ?1")
 	List<DictionaryItemDto> acquireItemsByDictId(Integer dictId);
 }

@@ -209,7 +209,7 @@ const state = reactive({
   },
   headers: [
     {title: '角色代码', key: 'code', align: 'start', sortable: true},
-    {title: '角色名称', key: 'name', align: 'start', sortable: true},
+    {title: '角色名称', key: 'name', align: 'start', sortable: false},
     {title: '角色状态', key: 'enabled', align: 'center', sortable: false},
     {title: '创建时间', key: 'createdDate', align: 'start', sortable: false},
     {title: '创建用户', key: 'createdBy', align: 'start', sortable: false},

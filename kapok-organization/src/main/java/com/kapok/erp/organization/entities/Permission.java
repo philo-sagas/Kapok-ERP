@@ -49,8 +49,8 @@ public class Permission {
 	private Byte type;
 
 	@NotNull
-	@Column(name = "sort", nullable = false)
-	private Integer sort;
+	@Column(name = "rank", nullable = false)
+	private Integer rank;
 
 	@NotNull
 	@Column(name = "leaf", nullable = false)

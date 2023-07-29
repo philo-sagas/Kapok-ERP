@@ -201,7 +201,7 @@ const state = reactive({
   headers: [
     {title: '用户账号', key: 'subject', align: 'start', sortable: true},
     {title: '用户名称', key: 'username', align: 'start', sortable: false},
-    {title: '用户状态', key: 'enabled', align: 'center', sortable: true},
+    {title: '用户状态', key: 'enabled', align: 'center', sortable: false},
     {title: '手机号码', key: 'phoneNumber', align: 'start', sortable: false},
     {title: '电子邮件', key: 'email', align: 'start', sortable: false},
     {title: '出生日期', key: 'birthdate', align: 'start', sortable: false},

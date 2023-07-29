@@ -1,11 +1,12 @@
 package com.kapok.authorization.config;
 
+import com.kapok.authorization.constants.ApplicationConstants;
 import com.kapok.authorization.support.CustomUser;
 import com.kapok.authorization.support.SendResponseAndLogoutAuthenticationSuccessHandler;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 import org.apache.commons.lang.ObjectUtils;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -37,9 +38,8 @@ import java.util.stream.Collectors;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
-	@Value("${spring.security.oauth2.authorizationserver.client.public-client.registration.redirect-uris[0]}")
-	String defaultRedirectUri;
+	@Autowired
+	private ApplicationConstants applicationConstants;
 
 	@Bean
 	@Order(1)
@@ -87,7 +87,7 @@ public class SecurityConfig {
 		CorsConfiguration config = new CorsConfiguration();
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
-		config.addAllowedOrigin(defaultRedirectUri);
+		config.setAllowedOrigins(applicationConstants.getCorsRedirectUris());
 		config.setAllowCredentials(true);
 		source.registerCorsConfiguration("/**", config);
 		return source;

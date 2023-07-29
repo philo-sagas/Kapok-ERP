@@ -204,7 +204,7 @@ const state = reactive({
   },
   headers: [
     {title: '数据字典代码', key: 'code', align: 'start', sortable: true},
-    {title: '数据字典名称', key: 'name', align: 'start', sortable: true},
+    {title: '数据字典名称', key: 'name', align: 'start', sortable: false},
     {title: '数据字典值', key: 'value', align: 'start', sortable: false},
     {title: '数据字典类型', key: 'type', align: 'start', sortable: true},
     {title: '数据字典状态', key: 'enabled', align: 'center', sortable: false},

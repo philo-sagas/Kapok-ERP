@@ -4,7 +4,7 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{F5D2FAFC-A525-4935-A7AA-646D4A2A21AC}" Name="organization" Selected="Yes" Type="{5F45F978-C4F3-4E35-A3FC-AF3318663A0F}" URL="organization.ldm"/>
+		<Model ID="{F5D2FAFC-A525-4935-A7AA-646D4A2A21AC}" Name="organization" Selected="Yes" Type="{5F45F978-C4F3-4E35-A3FC-AF3318663A0F}" URL="organization.ldm"/>
 		<Model Expanded="Yes" ID="{2B5CCE76-EC61-44A5-94EC-A465EE23D075}" Name="organization" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="organization.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>

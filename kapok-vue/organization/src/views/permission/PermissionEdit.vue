@@ -127,7 +127,7 @@ const dictionaryStore = useDictionaryStore()
 const permissionTypeItems = dictionaryStore.getValue('PermissionType')
 const model = ref({
   enabled: true,
-  sort: 0
+  rank: 0
 })
 const form = ref()
 

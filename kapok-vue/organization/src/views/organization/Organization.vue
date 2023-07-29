@@ -270,7 +270,7 @@ const state = reactive({
   },
   headers: [
     {title: '组织架构代码', key: 'code', align: 'start', sortable: true},
-    {title: '组织架构名称', key: 'name', align: 'start', sortable: true},
+    {title: '组织架构名称', key: 'name', align: 'start', sortable: false},
     {title: '组织架构类型', key: 'type', align: 'start', sortable: true},
     {title: '组织架构状态', key: 'enabled', align: 'center', sortable: false},
     {title: '创建时间', key: 'createdDate', align: 'start', sortable: false},

@@ -22,10 +22,10 @@ export default defineConfig({
   ],
   define: {
     'process.env': {
-      client_id: 'public-client',
-      client_secret: 'secret',
+      client_id: 'oidc-client',
+      client_secret: 'oidc-secret',
       scope: 'openid profile',
-      require_proof_key: true
+      require_proof_key: false
     }
   },
   resolve: {
